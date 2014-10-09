@@ -549,7 +549,7 @@ void LocatorWidget::show(const QString &text, int selectionStart, int selectionL
         m_fileLineEdit->setFocus();
     else
         showPopupNow();
-    ICore::raiseWindow(ICore::mainWindow());
+//    ICore::raiseWindow(ICore::mainWindow());
 
     if (selectionStart >= 0) {
         m_fileLineEdit->setSelection(selectionStart, selectionLength);
