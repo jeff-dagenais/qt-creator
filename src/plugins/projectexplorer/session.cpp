@@ -62,6 +62,8 @@ using namespace ProjectExplorer::Internal;
 
 namespace ProjectExplorer {
 
+bool SessionManager::cOnly = false;
+
 /*!
      \class ProjectExplorer::SessionManager
 
@@ -872,6 +874,8 @@ bool SessionManager::loadSession(const QString &session)
     }
 
     d->m_loadingSession = true;
+    cOnly = (session.contains(QString::fromAscii("kernel")) ||
+             session.contains(QString::fromAscii("linux")));
 
     // Allow everyone to set something in the session and before saving
     emit m_instance->aboutToUnloadSession(d->m_sessionName);

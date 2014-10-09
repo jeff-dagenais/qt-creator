@@ -105,7 +105,7 @@ class tst_c99: public QObject
         QFile file(testdata(fileName));
         if (file.open(QFile::ReadOnly)) {
             LanguageFeatures features;
-            features.c99Enabled = true;
+            features.c99Enabled = !cOnly && true;
             Client client(errors);
             doc->control()->setDiagnosticClient(&client);
             doc->setUtf8Source(QTextStream(&file).readAll().toUtf8());

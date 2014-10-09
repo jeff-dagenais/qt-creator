@@ -1073,10 +1073,10 @@ int CodeFormatter::tokenizeBlock(const QTextBlock &block, bool *endedJoined)
     QTC_ASSERT(startState != -1, return 0);
 
     LanguageFeatures features;
-    features.qtEnabled = true;
-    features.qtMocRunEnabled = true;
-    features.qtKeywordsEnabled = true;
-    features.objCEnabled = true;
+    features.qtEnabled = !cOnly;
+    features.qtMocRunEnabled = !cOnly;
+    features.qtKeywordsEnabled = !cOnly;
+    features.objCEnabled = !cOnly;
 
     SimpleLexer tokenize;
     tokenize.setLanguageFeatures(features);

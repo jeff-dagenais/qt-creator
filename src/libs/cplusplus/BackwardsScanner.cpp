@@ -48,10 +48,10 @@ BackwardsScanner::BackwardsScanner(const QTextCursor &cursor,
 {
     // FIXME: Why these defaults?
     LanguageFeatures features;
-    features.qtMocRunEnabled = true;
-    features.qtEnabled = true;
-    features.qtKeywordsEnabled = true;
-    features.objCEnabled = true;
+    features.qtMocRunEnabled = !cOnly;
+    features.qtEnabled = !cOnly;
+    features.qtKeywordsEnabled = !cOnly;
+    features.objCEnabled = !cOnly;
     _tokenize.setLanguageFeatures(features);
     _tokenize.setSkipComments(skipComments);
     _text = _block.text().left(cursor.position() - cursor.block().position());

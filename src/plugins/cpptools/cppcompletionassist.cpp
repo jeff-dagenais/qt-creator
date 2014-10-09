@@ -629,10 +629,10 @@ CppCompletionAssistProcessor::CppCompletionAssistProcessor()
     , m_hintProposal(0)
 {
     // FIXME: C++11?
-    m_languageFeatures.objCEnabled = true;
-    m_languageFeatures.qtEnabled = true;
-    m_languageFeatures.qtKeywordsEnabled = true;
-    m_languageFeatures.qtMocRunEnabled = true;
+    m_languageFeatures.objCEnabled = !cOnly;
+    m_languageFeatures.qtEnabled = !cOnly;
+    m_languageFeatures.qtKeywordsEnabled = !cOnly;
+    m_languageFeatures.qtMocRunEnabled = !cOnly;
 }
 
 CppCompletionAssistProcessor::~CppCompletionAssistProcessor()
@@ -684,10 +684,10 @@ bool CppCompletionAssistProcessor::accepts() const
                     tc.setPosition(pos);
 
                     LanguageFeatures features;
-                    features.qtEnabled = true;
-                    features.qtMocRunEnabled = true;
-                    features.qtKeywordsEnabled = true;
-                    features.objCEnabled = true;
+                    features.qtEnabled = !cOnly;
+                    features.qtMocRunEnabled = !cOnly;
+                    features.qtKeywordsEnabled = !cOnly;
+                    features.objCEnabled = !cOnly;
 
                     SimpleLexer tokenize;
                     tokenize.setLanguageFeatures(features);

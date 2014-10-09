@@ -284,12 +284,12 @@ Document::Document(const QString &fileName)
     const StringLiteral *fileId = _control->stringLiteral(localFileName.constData(),
                                                                       localFileName.size());
     LanguageFeatures features;
-    features.qtEnabled = true;
-    features.qtMocRunEnabled = true;
-    features.qtKeywordsEnabled = true;
-    features.cxx11Enabled = true;
-    features.objCEnabled = true;
-    features.c99Enabled = true;
+    features.qtEnabled = !cOnly;
+    features.qtMocRunEnabled = !cOnly;
+    features.qtKeywordsEnabled = !cOnly;
+    features.cxx11Enabled = !cOnly;
+    features.objCEnabled = !cOnly;
+    features.c99Enabled = !cOnly;
     _translationUnit = new TranslationUnit(_control, fileId);
     _translationUnit->setLanguageFeatures(features);
     (void) _control->switchTranslationUnit(_translationUnit);

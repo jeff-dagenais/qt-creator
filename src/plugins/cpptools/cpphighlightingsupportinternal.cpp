@@ -83,8 +83,8 @@ QFuture<TextEditor::HighlightingResult> CppHighlightingSupportInternal::highligh
         // Filter out C++ keywords
         // FIXME: Check default values or get from document.
         LanguageFeatures features;
-        features.cxx11Enabled = true;
-        features.c99Enabled = true;
+        features.cxx11Enabled = !cOnly && true;
+        features.c99Enabled = !cOnly && true;
 
         SimpleLexer tokenize;
         tokenize.setLanguageFeatures(features);

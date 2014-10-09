@@ -23,7 +23,11 @@
 
 #include "CPlusPlusForwardDeclarations.h"
 
+#include "../plugins/projectexplorer/session.h"
+static const bool& cOnly = ProjectExplorer::SessionManager::cOnly;
+
 namespace CPlusPlus {
+
 
 enum Kind {
     T_EOF_SYMBOL = 0,

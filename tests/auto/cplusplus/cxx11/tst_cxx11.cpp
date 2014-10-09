@@ -145,8 +145,8 @@ class tst_cxx11: public QObject
         QFile file(testdata(fileName));
         if (file.open(QFile::ReadOnly)) {
             LanguageFeatures features;
-            features.cxx11Enabled = true;
-            features.c99Enabled = c99Enabled;
+            features.cxx11Enabled = !cOnly && true;
+            features.c99Enabled = !cOnly && c99Enabled;
             processDocument(doc, QTextStream(&file).readAll().toUtf8(), features, errors);
         } else {
             qWarning() << "could not read file" << fileName;
@@ -294,7 +294,7 @@ void tst_cxx11::lambdaType()
     QFETCH(QString, expectedType);
 
     LanguageFeatures features;
-    features.cxx11Enabled = true;
+    features.cxx11Enabled = !cOnly && true;
 
     QByteArray errors;
     Document::Ptr doc = Document::create(QLatin1String("testFile"));

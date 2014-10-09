@@ -54,10 +54,10 @@ public:
     {
         const StringLiteral *fileId = control.stringLiteral("<stdin>");
         LanguageFeatures features;
-        features.objCEnabled = true;
-        features.qtEnabled = qtMocRun;
-        features.qtKeywordsEnabled = qtMocRun;
-        features.qtMocRunEnabled = qtMocRun;
+        features.objCEnabled = !cOnly;
+        features.qtEnabled = !cOnly && qtMocRun;
+        features.qtKeywordsEnabled = !cOnly && qtMocRun;
+        features.qtMocRunEnabled = !cOnly && qtMocRun;
         TranslationUnit *unit = new TranslationUnit(&control, fileId);
         unit->setLanguageFeatures(features);
         unit->setSource(source.constData(), source.length());

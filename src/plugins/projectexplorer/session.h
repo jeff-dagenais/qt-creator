@@ -62,6 +62,9 @@ class PROJECTEXPLORER_EXPORT SessionManager : public QObject
     Q_OBJECT
 
 public:
+
+    static bool cOnly;
+
     explicit SessionManager(QObject *parent = 0);
     ~SessionManager();
 

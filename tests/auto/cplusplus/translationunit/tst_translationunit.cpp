@@ -77,7 +77,7 @@ private:
         static Document::Ptr create(const QByteArray &source)
         {
             LanguageFeatures features;
-            features.objCEnabled = true;
+            features.objCEnabled = !cOnly && true;
             features.qtEnabled = false;
             features.qtKeywordsEnabled = false;
             features.qtMocRunEnabled = false;

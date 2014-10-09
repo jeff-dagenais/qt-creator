@@ -131,11 +131,11 @@ Token SimpleLexer::tokenAt(const QString &text,
 {
     // FIXME: Check default values.
     LanguageFeatures features;
-    features.qtMocRunEnabled = qtMocRunEnabled;
-    features.qtEnabled = qtMocRunEnabled;
-    features.qtKeywordsEnabled = qtMocRunEnabled;
-    features.objCEnabled = qtMocRunEnabled;
-    features.cxx11Enabled = qtMocRunEnabled;
+    features.qtMocRunEnabled = !cOnly && qtMocRunEnabled;
+    features.qtEnabled = !cOnly && qtMocRunEnabled;
+    features.qtKeywordsEnabled = !cOnly && qtMocRunEnabled;
+    features.objCEnabled = !cOnly && qtMocRunEnabled;
+    features.cxx11Enabled = !cOnly && qtMocRunEnabled;
     SimpleLexer tokenize;
     tokenize.setLanguageFeatures(features);
     const QList<Token> tokens = tokenize(text, state);

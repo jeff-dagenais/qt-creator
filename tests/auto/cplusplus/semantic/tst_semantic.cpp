@@ -139,11 +139,11 @@ public:
     QSharedPointer<Document> document(const QByteArray &source, bool enableObjc = false, bool qtMocRun = false, bool enableCxx11 = false)
     {
         LanguageFeatures features;
-        features.objCEnabled = enableObjc;
-        features.qtEnabled = qtMocRun;
-        features.qtMocRunEnabled = qtMocRun;
-        features.qtKeywordsEnabled = qtMocRun;
-        features.cxx11Enabled = enableCxx11;
+        features.objCEnabled = !cOnly && enableObjc;
+        features.qtEnabled = !cOnly && qtMocRun;
+        features.qtMocRunEnabled = !cOnly && qtMocRun;
+        features.qtKeywordsEnabled = !cOnly && qtMocRun;
+        features.cxx11Enabled = !cOnly && enableCxx11;
         diag.errorCount = 0; // reset the error count.
         TranslationUnit *unit = parse(source, TranslationUnit::ParseTranlationUnit, features);
         QSharedPointer<Document> doc(new Document(unit));
